@@ -1,0 +1,14 @@
+dimensi,kolom,masalah,jumlah,persen,keparahan,rencana
+Kelengkapan,berat_kg,Kosong untuk kategori non-fisik (MAR),351,22.75,Rendah,"Tandai tidak berlaku, bukan diisi"
+Konsistensi,id_anggota,Spasi di awal/akhir ID; menciptakan 59 anggota hantu (318 vs 259),65,4.21,Rendah,Terapkan str.strip() pada seluruh kolom
+Konsistensi,tanggal_transaksi,"Format campur: sebagian dd/mm/yyyy, sebagian yyyy-mm-dd",307,19.9,Sedang,"Konversi tiap format secara terpisah, lalu cek rentang bulan hasilnya"
+Keunikan,seluruh kolom,Baris duplikat persis,24,1.56,Sedang,"Hapus, simpan satu"
+Kelengkapan,metode_bayar,"Placeholder teks: N/A, -, null, tidak diketahui",19,1.23,Sedang,"Ubah menjadi NaN, lalu putuskan: dihapus atau dikategorikan ""Tidak tercatat"""
+Validitas,total_bayar,"Nilai berformat teks ""Rp 18.000"", membuat seluruh kolom bertipe object",250,16.2,Tinggi,"Buang ""Rp"" dan titik ribuan, lalu konversi ke numerik"
+Kelengkapan,saldo_simpanan,"Kosong, diduga MNAR",159,10.3,Tinggi,Jangan diimputasi; tanyakan ke pengurus koperasi
+Akurasi,total_bayar,total_bayar tidak sama dengan jumlah x harga x (1 - diskon); 250 baris lain belum bisa diperiksa,84,5.44,Tinggi,"Bandingkan dengan nota; setelah kolom dikonversi, periksa ulang pada seluruh baris"
+Kelengkapan,rating_layanan,Placeholder -999,49,3.18,Tinggi,Ubah menjadi NaN sebelum dihitung
+Validitas,jumlah,Nilai nol atau negatif,29,1.88,Tinggi,"Telusuri apakah retur; bila bukan, keluarkan dari analisis"
+Keunikan,id_transaksi,ID kosong (7) atau berulang pada baris yang isinya berbeda (19),26,1.69,Tinggi,Periksa apakah salah input atau transaksi berbeda; beri ID baru bila perlu
+Konsistensi,kategori,Satu kategori ditulis beberapa cara,13,0.84,Tinggi,Seragamkan; sinonim diputuskan manual
+Validitas,diskon_persen,"Diskon negatif (-20) atau lebih dari 100% (110, 150)",9,0.58,Tinggi,"Telusuri ke nota; koreksi bila salah ketik, bila tidak keluarkan dari analisis"
